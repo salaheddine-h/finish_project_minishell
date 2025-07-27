@@ -207,7 +207,7 @@ void				setup_redirections(t_cmd *cmd, t_shell *shell);
 void                execute_cmds(t_cmd *clist, t_shell *shell);
 void                heredoc_input(char *delimiter, t_red_list *head,t_shell *shell);
 void                ft_free_2d_array(char **arr);
-char                *get_env_value(char **env, const char *key);
+char                *get_env(char **env, const char *key);
 char                **filter_empty_args(t_cmd *cmd);
 char                **generate_envp_from_envlist(t_shell *shell);
 char                *ft_strjoin_triple(char *a, char *b, char *c);

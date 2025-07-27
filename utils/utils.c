@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 12:03:48 by salhali           #+#    #+#             */
-/*   Updated: 2025/07/27 20:40:32 by salhali          ###   ########.fr       */
+/*   Updated: 2025/07/27 20:50:22 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	ft_free_2d_array(char **arr)
 	free(arr);
 }
 
-char *get_env_value(char **env, const char *key)
+char *get_env(char **env, const char *key)
 {
     size_t len = ft_strlen(key);
     int i = 0;

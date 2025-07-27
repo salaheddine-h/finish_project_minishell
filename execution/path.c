@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 17:13:38 by salhali           #+#    #+#             */
-/*   Updated: 2025/07/27 20:40:51 by salhali          ###   ########.fr       */
+/*   Updated: 2025/07/27 20:50:26 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
     if (access(cmd, X_OK) == 0)
         return ft_strdup(cmd); // full path already
 
-    char *path = get_env_value(envp, "PATH");
+    char *path = get_env(envp, "PATH");
     char **string = ft_split(path, ':');
     char *full_path;
 
