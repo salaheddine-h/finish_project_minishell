@@ -6,45 +6,58 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/07/26 21:14:48 by salhali          ###   ########.fr       */
+/*   Updated: 2025/07/27 16:52:32 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char **filter_empty_args(t_cmd *cmd)
+int	count_non_empty_args(t_cmd *cmd)
 {
-    char **filtered;
-    int count = 0;
-    int i = 0;
-    int j;
+	int	count;
+	int	i;
 
-    if (cmd->qflag == 0 || cmd->array == NULL)
-        return cmd->array;
+	count = 0;
+	i = 0;
+	while (cmd->array[i])
+	{
+		if (ft_strlen(cmd->array[i]) > 0)
+			count++;
+		i++;
+	}
+	return (count);
+}
+void	copy_non_empty_args(t_cmd *cmd, char **filtered)
+{
+	int	i;
+	int	j;
 
-    while (cmd->array[i])
-    {
-        if (ft_strlen(cmd->array[i]) > 0)
-            count++;
-        i++;
-    }
-    filtered = malloc(sizeof(char *) * (count + 1));
-    if (!filtered)
-        return cmd->array;
+	i = 0;
+	j = 0;
+	while (cmd->array[i])
+	{
+		if (ft_strlen(cmd->array[i]) > 0)
+		{
+			filtered[j] = cmd->array[i];
+			j++;
+		}
+		i++;
+	}
+	filtered[j] = NULL;
+}
+char	**filter_empty_args(t_cmd *cmd)
+{
+	char	**filtered;
+	int		count;
 
-    j = 0;
-    i = 0;
-    while (cmd->array[i])
-    {
-        if (ft_strlen(cmd->array[i]) > 0)
-        {
-            filtered[j] = cmd->array[i];
-            j++;
-        }
-        i++;
-    }
-    filtered[j] = NULL;
-    return filtered;
+	if (cmd->qflag == 0 || cmd->array == NULL)
+		return (cmd->array);
+	count = count_non_empty_args(cmd);
+	filtered = malloc(sizeof(char *) * (count + 1));
+	if (!filtered)
+		return (cmd->array);
+	copy_non_empty_args(cmd, filtered);
+	return (filtered);
 }
 
 void execute_cmds(t_cmd *clist, t_shell *shell)
@@ -80,7 +93,7 @@ void execute_cmds(t_cmd *clist, t_shell *shell)
             setup_redirections(clist , shell);
             if (is_builtin(clist))
             {
-                printf("Executing builtin command: %s\n", clist->cmd);
+                printf("Executing builtin command from exetuce_cmds : %s\n", clist->cmd);
                 exit(execute_builtin(clist, shell));
             }
             cmd_path = find_path(clist->array[0], envp);
