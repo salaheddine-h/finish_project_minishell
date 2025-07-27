@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahabibi- <ahabibi-@student.42.fr>          +#+  +:+       +#+         #
+#    By: salhali <salhali@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/19 17:02:36 by salhali           #+#    #+#              #
-#    Updated: 2025/07/26 18:09:08 by ahabibi-         ###   ########.fr        #
+#    Updated: 2025/07/27 16:55:38 by salhali          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = 		builtins/builtin_echo.c \
 			execution/execute.c \
 			execution/redirections.c \
 			execution/path.c \
+			execution/filter_cmd.c \
 			myymain.c \
 			parser/expand.c \
 			parser/fill_array.c \

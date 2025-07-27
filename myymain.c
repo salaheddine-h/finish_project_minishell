@@ -6,7 +6,7 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 04:46:55 by ahabibi-          #+#    #+#             */
-/*   Updated: 2025/07/27 16:30:27 by salhali          ###   ########.fr       */
+/*   Updated: 2025/07/27 20:04:18 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	call_all(char *input, t_wlist **wlist, t_cmd **clist,t_shell *shell)
 	commandornot(pars, wlist);
 	token = typesee(wlist);
 	splitit(token, clist);
+	// print_cmd_list(*clist);
 	free_plist(&pars);
 }
 

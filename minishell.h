@@ -229,5 +229,5 @@ void				execute_command_loop(t_cmd *clist, t_shell *shell, char **envp);
 void				handle_append_redirection(t_red_list *tmp);
 void				handle_output_redirection(t_red_list *tmp);
 void				handle_input_redirection(t_red_list *tmp);
-
+void				WAITPID(pid_t *pids, int i);
 #endif

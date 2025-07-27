@@ -6,59 +6,11 @@
 /*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/07/27 16:52:32 by salhali          ###   ########.fr       */
+/*   Updated: 2025/07/27 17:53:24 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int	count_non_empty_args(t_cmd *cmd)
-{
-	int	count;
-	int	i;
-
-	count = 0;
-	i = 0;
-	while (cmd->array[i])
-	{
-		if (ft_strlen(cmd->array[i]) > 0)
-			count++;
-		i++;
-	}
-	return (count);
-}
-void	copy_non_empty_args(t_cmd *cmd, char **filtered)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (cmd->array[i])
-	{
-		if (ft_strlen(cmd->array[i]) > 0)
-		{
-			filtered[j] = cmd->array[i];
-			j++;
-		}
-		i++;
-	}
-	filtered[j] = NULL;
-}
-char	**filter_empty_args(t_cmd *cmd)
-{
-	char	**filtered;
-	int		count;
-
-	if (cmd->qflag == 0 || cmd->array == NULL)
-		return (cmd->array);
-	count = count_non_empty_args(cmd);
-	filtered = malloc(sizeof(char *) * (count + 1));
-	if (!filtered)
-		return (cmd->array);
-	copy_non_empty_args(cmd, filtered);
-	return (filtered);
-}
 
 void execute_cmds(t_cmd *clist, t_shell *shell)
 {
@@ -116,13 +68,16 @@ void execute_cmds(t_cmd *clist, t_shell *shell)
         clist = clist->next;
         i++;
     }
+    WAITPID(pids, i);
+    ft_free_2d_array(envp);
+}
 
+void    WAITPID(pid_t *pids, int i)
+{
     int j = 0;
     while (j < i)
     {
         waitpid(pids[j], NULL, 0);
         j++;
     }
-    ft_free_2d_array(envp);
 }
-

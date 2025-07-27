@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initializer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahabibi- <ahabibi-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: salhali <salhali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 02:46:22 by ahabibi-          #+#    #+#             */
-/*   Updated: 2025/07/24 20:48:05 by ahabibi-         ###   ########.fr       */
+/*   Updated: 2025/07/27 18:29:14 by salhali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ t_pars	*init_pars(char *in)
 
 void	count_pipes(t_pars *pars)
 {
-	int	i;
+	// int	i;
 
-	i = 0;
+	// i = 0;
 	while (pars->content[pars->i])
 	{
 		if (pars->content[pars->i] == '<' || pars->content[pars->i] == '>'
